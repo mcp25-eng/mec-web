@@ -1,0 +1,14 @@
+{
+  "name": "mec-islami-icerik-sitesi",
+  "version": "1.0.0",
+  "description": "MEC - Sana İyi Gelen Her Şey | İslami içerik sitesi",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "quran": "node tools/fetch-quran.mjs",
+    "images": "powershell -ExecutionPolicy Bypass -File tools/make-images.ps1",
+    "build": "node src/build.mjs",
+    "start": "node tools/serve.mjs",
+    "dev": "node src/build.mjs && node tools/serve.mjs"
+  }
+}

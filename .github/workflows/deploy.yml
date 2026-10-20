@@ -1,0 +1,50 @@
+name: Siteyi yayınla (GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Günlük içerik (bugünün ayeti, hicri tarih vb.) için her gün yeniden üret
+    - cron: '15 0 * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Üret
+        env:
+          # Depo > Settings > Secrets and variables > Actions > Variables > SITE_URL
+          # örn. https://www.siteadi.com
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: node src/build.mjs
+      - name: Bağlantıları kontrol et
+        run: node tools/check-links.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    # SITE_URL (alan adı) tanımlanana kadar yayınlama
+    if: ${{ vars.SITE_URL != '' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
