@@ -131,8 +131,8 @@
       if (endpoint) {
         say('Gönderiliyor…', true);
         fetch(endpoint, { method: 'POST', body: fd, headers: { Accept: 'application/json' } })
-          .then(function (r) {
-            if (!r.ok) throw new Error('http');
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === false) throw new Error('http'); }); })
+          .then(function () {
             form.reset();
             say(kind === 'newsletter' ? 'Teşekkürler! Aboneliğiniz alındı.' : 'Teşekkürler! Sorunuz bize ulaştı.', true);
           })

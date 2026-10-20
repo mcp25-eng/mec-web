@@ -124,7 +124,19 @@ export const team = [];
 //  Sunucu gerektirmeyen servislerden biriyle çalışır (örn. Formspree, Getform, Web3Forms, Netlify Forms).
 //  endpoint: formun POST edileceği adres. Boşsa form, e-posta uygulamasını (mailto) açar.
 // ============================================================
-export const forms = { askEndpoint: '', newsletterEndpoint: '' };
+//  Web3Forms: mailler site e-postasına (info@mecmedya.org) düşer. Anahtar herkese açıktır (yalnızca bu adrese gönderim yapar).
+const WEB3FORMS_KEY = '8e4cdab3-9133-4b4d-8ec0-bc724e9f1f3d';
+const W3F = 'https://api.web3forms.com/submit';
+export const forms = {
+  askEndpoint: WEB3FORMS_KEY ? W3F : '',
+  newsletterEndpoint: WEB3FORMS_KEY ? W3F : '',
+  // Formlara eklenen gizli alanlar (anahtar, konu, spam tuzağı)
+  fields(subject) {
+    if (!WEB3FORMS_KEY) return '';
+    const s = String(subject).replace(/"/g, '&quot;');
+    return `<input type="hidden" name="access_key" value="${WEB3FORMS_KEY}"><input type="hidden" name="subject" value="${s}"><input type="hidden" name="from_name" value="MEC Web Sitesi">`;
+  },
+};
 
 // ============================================================
 //  FİTRE: Diyanet her yıl açıklar. Açıklanınca buraya yazın (TL). Boşsa kullanıcı kendisi girer.

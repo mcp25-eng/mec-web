@@ -448,6 +448,7 @@ export function buildExtra(ctx) {
       <div class="field"><label for="a-konu">Konu</label><select id="a-konu" name="konu"><option>Namaz</option><option>Abdest ve temizlik</option><option>Oruç ve Ramazan</option><option>Zekât ve fitre</option><option>Hac ve umre</option><option>Kur'an ve dua</option><option>İslam ve iman</option><option>Diğer</option></select></div>
       <div class="field"><label for="a-soru">Sorunuz</label><textarea id="a-soru" name="soru" rows="6" required></textarea></div>
       <div class="field check"><label><input type="checkbox" name="yayin" value="evet"> Sorum, adım belirtilmeden sitede yayınlanabilir.</label></div>
+      ${forms.fields(site.name + ' Soru Formu')}
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       <button class="btn" type="submit">Gönder</button>
       <p class="form-msg small" role="status" aria-live="polite"></p>
@@ -473,6 +474,7 @@ export function buildExtra(ctx) {
 <div class="wrap section"><div class="form-card">
   <form class="mec-form" data-form="newsletter" data-endpoint="${esc(forms.newsletterEndpoint)}" data-mailto="${esc(site.email)}" data-subject="${esc(site.name)} Bülten Aboneliği" action="${forms.newsletterEndpoint ? esc(forms.newsletterEndpoint) : '#'}" method="post">
     <div class="field"><label for="b-mail">E-posta adresiniz</label><input id="b-mail" name="email" type="email" required autocomplete="email"></div>
+    ${forms.fields(site.name + ' Bülten Aboneliği')}
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <button class="btn" type="submit">Abone Ol</button>
     <p class="form-msg small" role="status" aria-live="polite"></p>

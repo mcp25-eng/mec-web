@@ -162,6 +162,7 @@ function newsletterBand() {
     <form class="mec-form nl-form" data-form="newsletter" data-endpoint="${esc(forms.newsletterEndpoint)}" data-mailto="${esc(site.email)}" data-subject="${esc(site.name)} Bülten Aboneliği" action="${forms.newsletterEndpoint ? esc(forms.newsletterEndpoint) : '/bulten/'}" method="post">
       <label class="sr" for="nl-mail">E-posta adresiniz</label>
       <input id="nl-mail" name="email" type="email" placeholder="E-posta adresiniz" required autocomplete="email">
+      ${forms.fields(site.name + ' Bülten Aboneliği')}
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       <button class="btn" type="submit">Abone Ol</button>
       <p class="form-msg small" role="status" aria-live="polite"></p>
