@@ -9,7 +9,7 @@ export const site = {
   title: 'MEC – Sana İyi Gelen Her Şey | İslami İçerikler, İbadet Rehberi ve Dualar',
   description:
     'MEC; namaz, abdest, oruç, zekât, dualar, zikirler, Kur\'an-ı Kerim, siyer ve güzel ahlak üzerine sade, güvenilir ve kaynaklı İslami içerikler sunar. Namaz vakitleri, Esmaül Hüsna ve zikirmatik bir arada.',
-  url: (process.env.SITE_URL || 'https://www.example.com').replace(/\/+$/, ''),
+  url: (process.env.SITE_URL || 'https://mecmedya.org').replace(/\/+$/, ''),
   email: 'info@mecmedya.org',
   lang: 'tr',
   locale: 'tr_TR',
