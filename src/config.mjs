@@ -10,7 +10,7 @@ export const site = {
   description:
     'MEC; namaz, abdest, oruç, zekât, dualar, zikirler, Kur\'an-ı Kerim, siyer ve güzel ahlak üzerine sade, güvenilir ve kaynaklı İslami içerikler sunar. Namaz vakitleri, Esmaül Hüsna ve zikirmatik bir arada.',
   url: (process.env.SITE_URL || 'https://www.example.com').replace(/\/+$/, ''),
-  email: 'iletisim@example.com',
+  email: 'info@mecmedya.org',
   lang: 'tr',
   locale: 'tr_TR',
   themeColor: '#0d8b97',
